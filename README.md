@@ -1,5 +1,9 @@
 # Assignment: Basic Full-Stack Blog Project using MERN
 
+#### [Client-Side Live Link](https://blogapp-assignment.netlify.app)
+
+#### [Server-Side Live Link](https://blog-app-zn8u.onrender.com/api/v1/blog/all-blog)
+
 - Frontend Package: `npm install react-router-dom axios bootstrap react-bootstrap react-icons react-hot-tost`
 
 - Backend Package: `npm install express express-rate-limit cors helmet npp mongoose express-mongo-sanitize dotenv jsonwebtoken bcrypt nodemailer`
