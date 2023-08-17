@@ -37,7 +37,7 @@ const Login = () => {
           email: inputs.email,
           password: inputs.password,
         };
-        const { data } = await axios.post('http://localhost:8000/api/v1/user/login', formBody);
+        const { data } = await axios.post('https://blog-app-zn8u.onrender.com/api/v1/user/login', formBody);
         if (data.success) {
           // get id localStorage
           localStorage.setItem('userId', data?.data?.id);

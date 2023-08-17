@@ -42,7 +42,10 @@ const CreateBlog = () => {
         user: id,
       };
       try {
-        const { data } = await axios.post('http://localhost:8000/api/v1/blog/create-blog', formBody);
+        const { data } = await axios.post(
+          'https://blog-app-zn8u.onrender.com/api/v1/blog/create-blog',
+          formBody
+        );
         if (data?.success) {
           toast.success('Blog Created Successfully');
           navigate('/my-blogs');

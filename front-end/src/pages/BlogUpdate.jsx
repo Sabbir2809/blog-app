@@ -13,7 +13,7 @@ const BlogUpdate = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get(`http://localhost:8000/api/v1/blog/get-blog/${id}`);
+        const { data } = await axios.get(`https://blog-app-zn8u.onrender.com/api/v1/blog/get-blog/${id}`);
         if (data.success) {
           setBlog(data?.data);
           setInputs({
@@ -46,7 +46,10 @@ const BlogUpdate = () => {
         user: id,
       };
       try {
-        const { data } = await axios.put(`http://localhost:8000/api/v1/blog/update-blog/${id}`, formBody);
+        const { data } = await axios.put(
+          `https://blog-app-zn8u.onrender.com/api/v1/blog/update-blog/${id}`,
+          formBody
+        );
         if (data?.success) {
           toast.success('Blog Updated Successfully');
           navigate('/my-blogs');

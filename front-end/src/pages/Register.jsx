@@ -40,7 +40,10 @@ const Register = () => {
         password: inputs.password,
       };
       try {
-        const { data } = await axios.post('http://localhost:8000/api/v1/user/register', formBody);
+        const { data } = await axios.post(
+          'https://blog-app-zn8u.onrender.com/api/v1/user/register',
+          formBody
+        );
         if (data?.success) {
           toast.success('User Registration Successfully');
           navigate('/login');

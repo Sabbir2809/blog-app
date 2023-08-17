@@ -15,7 +15,9 @@ const BlogCard = ({ blog, isUser }) => {
 
   const handleDelete = async () => {
     try {
-      const { data } = await axios.delete(`http://localhost:8000/api/v1/blog/delete-blog/${_id}`);
+      const { data } = await axios.delete(
+        `https://blog-app-zn8u.onrender.com/api/v1/blog/delete-blog/${_id}`
+      );
       if (data?.success) {
         Swal.fire({
           position: 'center',

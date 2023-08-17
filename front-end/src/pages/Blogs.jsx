@@ -13,7 +13,7 @@ const Blogs = () => {
     (async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get('http://localhost:8000/api/v1/blog/all-blog');
+        const { data } = await axios.get('https://blog-app-zn8u.onrender.com/api/v1/blog/all-blog');
         if (data?.success) {
           setLoading(false);
           setBlogs(data?.data);
