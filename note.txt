@@ -1,0 +1,5 @@
+1. Client-Side Live Link: https://blogapp-assignment.netlify.app
+2. Server-Side Live Link: https://blog-app-zn8u.onrender.com/api/v1/blog/all-blog
+
+3. Front-end GitHub Repository: https://github.com/Sabbir2809/blog-app/tree/main/front-end 
+4. Back-end GitHub Repository: https://github.com/Sabbir2809/blog-app/tree/main/back-end
