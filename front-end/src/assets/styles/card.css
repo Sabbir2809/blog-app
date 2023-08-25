@@ -1,4 +1,4 @@
-.card:hover {
+.blog-card:hover {
   cursor: pointer;
   border: 1px solid blue;
 }
@@ -18,7 +18,7 @@
   object-fit: cover;
 }
 
-.card {
+.blog-card {
   display: flex;
   flex-direction: column;
   width: clamp(20rem, calc(20rem + 2vw), 22rem);

@@ -1,6 +1,7 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import BlogCard from '../components/BlogCard';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import BlogCard from "../components/BlogCard";
 
 const UserBlogs = () => {
   // react state
@@ -9,30 +10,30 @@ const UserBlogs = () => {
   useEffect(() => {
     (async () => {
       try {
-        const id = localStorage.getItem('userId');
+        const id = localStorage.getItem("userId");
         const { data } = await axios.get(`https://blog-app-zn8u.onrender.com/api/v1/blog/user-blog/${id}`);
+
         if (data.success) {
           setBlogs(data?.data?.blogs);
         }
       } catch (error) {
-        console.error(error.message);
+        if (error.response.data.message) {
+          return toast.error(error.response.data.message);
+        }
       }
     })();
   }, []);
 
   return (
     <>
-      <div className='alert alert-primary text-center' role='alert'>
-        <h5>Profile: {localStorage.getItem('userEmail')}</h5>
-      </div>
-      {blogs && blogs.length > 0 ? (
-        <div className='containerCard'>
+      {blogs.length > 0 ? (
+        <div className="containerCard">
           {blogs.map((blog) => (
-            <BlogCard blog={blog} isUser={true} />
+            <BlogCard key={blog?._id} blog={blog} isUser={true} />
           ))}
         </div>
       ) : (
-        <h2 className='text-center text-success mt-4'>You have created a New Blog</h2>
+        <h2 className="text-center text-success mt-4">You have created a New Blog</h2>
       )}
     </>
   );

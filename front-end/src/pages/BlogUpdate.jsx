@@ -1,8 +1,8 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import './../assets/styles/form.css';
-import { toast } from 'react-hot-toast';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import { useNavigate, useParams } from "react-router-dom";
+import "./../assets/styles/form.css";
 
 const BlogUpdate = () => {
   const { id } = useParams();
@@ -51,61 +51,63 @@ const BlogUpdate = () => {
           formBody
         );
         if (data?.success) {
-          toast.success('Blog Updated Successfully');
-          navigate('/my-blogs');
+          toast.success("Blog Updated Successfully");
+          navigate("/my-blogs");
         }
       } catch (error) {
-        console.error(error.message);
+        if (error.response.data.message) {
+          return toast.error(error.response.data.message);
+        }
       }
     })();
   };
 
   return (
-    <div className='Auth-form-container'>
-      <form className='Auth-form' onSubmit={handleUpdate}>
-        <div className='Auth-form-content'>
-          <h3 className='Auth-form-title'>Update Blog</h3>
-          <div className='form-group mt-3'>
-            <label htmlFor='title'>Title</label>
+    <div className="Auth-form-container">
+      <form className="Auth-form" onSubmit={handleUpdate}>
+        <div className="Auth-form-content">
+          <h3 className="Auth-form-title">Update Blog</h3>
+          <div className="form-group mt-3">
+            <label htmlFor="title">Title</label>
             <input
-              type='text'
-              name='title'
+              type="text"
+              name="title"
               value={inputs.title}
               onChange={handleChange}
               required
-              id='title'
-              className='form-control mt-1'
-              placeholder='Blog title'
+              id="title"
+              className="form-control mt-1"
+              placeholder="Blog title"
             />
           </div>
-          <div className='form-group mt-3'>
-            <label htmlFor='description'>Description</label>
+          <div className="form-group mt-3">
+            <label htmlFor="description">Description</label>
             <input
-              type='text'
-              name='description'
+              type="text"
+              name="description"
               value={inputs.description}
               onChange={handleChange}
-              id='description'
+              id="description"
               required
-              className='form-control mt-1'
-              placeholder='Blog Description'
+              className="form-control mt-1"
+              placeholder="Blog Description"
             />
           </div>
-          <div className='form-group mt-3'>
-            <label htmlFor='image'>Image</label>
+          <div className="form-group mt-3">
+            <label htmlFor="image">Image</label>
             <input
-              type='text'
-              className='form-control mt-1'
-              name='image'
+              type="text"
+              className="form-control mt-1"
+              name="image"
               value={inputs.image}
               onChange={handleChange}
-              id='image'
+              id="image"
               required
-              placeholder='Image URL'
+              placeholder="Image URL"
             />
           </div>
-          <div className='d-grid gap-2 mt-3'>
-            <button type='submit' className='btn btn-warning'>
+          <div className="d-grid gap-2 mt-3">
+            <button type="submit" className="btn btn-warning">
               Update Post
             </button>
           </div>

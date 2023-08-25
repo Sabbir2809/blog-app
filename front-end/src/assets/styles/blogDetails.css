@@ -1,0 +1,13 @@
+.card-section {
+  width: 90vw;
+  margin: 0 auto;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.blog-details__img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}

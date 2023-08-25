@@ -1,7 +1,8 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import BlogCard from '../components/BlogCard';
-import { Link } from 'react-router-dom';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import BlogCard from "../components/BlogCard";
+import Loader from "./Loader";
 
 const Blogs = () => {
   // react state
@@ -13,36 +14,30 @@ const Blogs = () => {
     (async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get('https://blog-app-zn8u.onrender.com/api/v1/blog/all-blog');
+        const { data } = await axios.get("https://blog-app-zn8u.onrender.com/api/v1/blog/all-blog");
         if (data?.success) {
           setLoading(false);
           setBlogs(data?.data);
         }
       } catch (error) {
-        console.error(error.message);
+        if (error.response.data.message) {
+          return toast.error(error.response.data.message);
+        }
       }
     })();
   }, []);
   return (
     <>
       {isLoading && (
-        <div className='d-flex justify-content-center'>
-          <div className='spinner-border' role='status'>
-            <span className='visually-hidden'>Loading...</span>
-          </div>
+        <div className="d-flex justify-content-center">
+          <Loader />
         </div>
       )}
-      {blogs.length > 0 ? (
-        <div className='containerCard'>
-          {blogs.map((blog) => (
-            <BlogCard blog={blog} isUser={localStorage.getItem('userId') === blog?.user?._id} />
-          ))}
-        </div>
-      ) : (
-        <h2 className='text-center text-success mt-4'>
-          Blog Not Found! <Link to={'/create-blog'}>Please Create a New Blog</Link>{' '}
-        </h2>
-      )}
+      <div className="containerCard">
+        {blogs.map((blog) => (
+          <BlogCard key={blog?._id} blog={blog} isUser={localStorage.getItem("userId") === blog?.user?._id} />
+        ))}
+      </div>
     </>
   );
 };
